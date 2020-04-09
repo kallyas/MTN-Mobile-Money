@@ -19,6 +19,7 @@ for testing purposes, try option 1
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <unistd.h>
 
 //menus (proto types/ Functions)
 int menuMain();
@@ -33,11 +34,22 @@ int myAccount();
 int eastAfrica();
 int airtelTanzania();
 int restOfAfrica();
+int sendWithCare();
+int favorites();
+int manageFavourites();
 int choice;
 int ammount;
 char phoneNumber[14]; //used char for phoneNumber because we want to include zero(0) at coutry code eg. +256
 int mobileMoney = 1000000; //Mobile money value set to 1Million
 int balance;
+
+//create manageFavourites() using struct
+
+struct createFavourite {
+    char name[15];
+    char phoneNumber[14];
+} fav;
+
 
 int main()
 {
@@ -135,6 +147,9 @@ int sendMoney() {
         restOfAfrica();
         
     }else if(choice == 4) {
+        system("clear"); //clear screen#
+        
+        sendWithCare(); //call the function to load the menu
         
     } else if(choice == 5) {
         
@@ -340,6 +355,168 @@ int restOfAfrica() {
     }
 }
 
+
+//send with care menu function
+
+int sendWithCare() {
+    
+    puts("Send with Care");
+    puts("1) Mobile User");
+    puts("2) Favorites");
+    puts("3) School Fees");
+    puts("4) MyCaretaker");
+    puts("5) AYO send with care Balances or Claim");
+    puts("0) Back");
+    scanf("%d", &choice);
+    
+    //use if statement to make selection options
+    if(choice == 1) {
+        system("clear");
+        puts("Enter Number you're sending to");
+        scanf("%s", phoneNumber);
+        puts("Enter Ammount");
+        scanf("%d", &ammount);
+        
+        //calculate balance
+        balance = mobileMoney - ammount;
+        
+        //check if the ammount to be sent is not bigger than Mobile Money Balnce
+        if (ammount <= mobileMoney) {
+            printf("You have sent %d shs to %s and your balance is %d", ammount, phoneNumber, balance);
+        } else {
+            printf("You have Insufficient balance on your account");
+        }
+        //exit when the transaction finishes
+         exit(0);
+        
+    } else if(choice == 2) {
+        system("clear"); //clear screen
+        
+        //load favorites menu
+        favorites();
+    } else if(choice == 3) {
+        
+    } else if(choice == 4) {
+        
+    } else if(choice == 5) {
+        
+    } else if(choice == 0) {
+        
+    } else {
+        printf("Invalid Input! Please try Again!\n");
+        
+        //load the menu Again after one second
+        sleep(1);
+        sendWithCare();
+    }
+}
+
+
+//create favorites array
+
+//int favorites[i]
+//favorites menu
+
+int favorites() {
+    puts("Favorites");
+    puts("1) Find Number");
+    puts("2) Select Number");
+    puts("3) Manage Favorites");
+    puts("0) Back");
+    scanf("%d", &choice);
+    
+    if(choice == 1) {
+        printf("Please Enter your favorites Number\n");
+        scanf("%s",phoneNumber);
+        puts("Enter Ammount");
+        scanf("%d", &ammount);
+        
+        //calculate balance
+        balance = mobileMoney - ammount;
+        
+        //check if the ammount to be sent is not bigger than Mobile Money Balnce
+        if (ammount <= mobileMoney) {
+            printf("You have sent %d shs to %s and your balance is %d", ammount, phoneNumber, balance);
+        } else {
+            printf("You have Insufficient balance on your account");
+        }
+        //exit when the transaction finishes
+         exit(0);
+    } else if(choice == 2) {
+         printf("Please Enter your favorites Number\n");
+        scanf("%s",phoneNumber);
+        puts("Enter Ammount");
+        scanf("%d", &ammount);
+        
+        //calculate balance
+        balance = mobileMoney - ammount;
+        
+        //check if the ammount to be sent is not bigger than Mobile Money Balnce
+        if (ammount <= mobileMoney) {
+            printf("You have sent %d shs to %s and your balance is %d", ammount, phoneNumber, balance);
+        } else {
+            printf("You have Insufficient balance on your account");
+        }
+        //exit when the transaction finishes
+         exit(0);
+    } else if(choice == 3) {
+        
+        manageFavourites();
+        
+    } else if(choice == 0) {
+        
+    } else {
+        puts("Invalid Input! Please Try again!");
+        
+        //sleep for one second
+        sleep(1);
+        sendWithCare();
+    }
+}
+
+//manageFavourites()
+
+int manageFavourites() {
+    system("clear");// clear screen
+    puts("Manage Favorites");
+    puts("1) Create Contact");
+    puts("2) Delete Contact");
+    puts("0) Back");
+    scanf("%d", &choice);
+    
+    if(choice == 1) {
+        puts("Enter Name");
+        scanf("%s", fav.name);
+        puts("Enter Number");
+        scanf("%s", fav.phoneNumber);
+        puts("Creating Contact...");
+        //sleep
+        sleep(1);
+        puts("contact created successfully!");
+        
+        //exit program
+        exit(0);
+    } else if(choice == 2) {
+        
+        //set the variables to empty string
+        // fav.name = NULL;
+        // fav.phoneNumber = NULL;
+        
+        puts("contact Deleted successfully!");
+    
+        //exit program
+        exit(0);
+    } else if(choice == 0) {
+        
+        //go back to favorites()
+        favorites();
+    } else {
+        puts("Invalid Input! Please Try again!");
+    
+        //exit program
+        exit(0);
+    }
+}
 
 //airtimeBundles function
 int airtimeBundles() {
