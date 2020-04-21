@@ -1,25 +1,23 @@
 /******************************************************************************
-
                             Online C Compiler.
                 Code, Compile, Run and Debug C program online.
 Write your code in this editor and press "Run" button to compile and execute it.
-
 MTN Mobile Money Replica By Iden.
-
 Note: change system("clear") to system("cls")
 I used system("clear") because the compiler is running on a unix system
 so for windows, you have to use system("cls).
-
 Started this program today evening, Implying most of the menu options are not yet worked on!
-
 for testing purposes, try option 1
-
 *******************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+// #include <conio.h>
+// #include <curses.h>
 #include <unistd.h>
+
+//define data size
+//#define DATA_SIZE 1000
 
 //menus (proto types/ Functions)
 int menuMain();
@@ -40,8 +38,15 @@ int manageFavourites();
 int choice;
 int ammount;
 char phoneNumber[14]; //used char for phoneNumber because we want to include zero(0) at coutry code eg. +256
-int mobileMoney = 1000000; //Mobile money value set to 1Million
+int mobileMoney = 1000000; //1000000; //Mobile money value set to 1Million
 int balance;
+int saveData();
+
+// //variable to store data
+// char data[DATA_SIZE];
+
+//  /* File pointer to hold reference to our file */
+//     FILE * fPtr;
 
 //create manageFavourites() using struct
 
@@ -395,7 +400,10 @@ int sendWithCare() {
         //load favorites menu
         favorites();
     } else if(choice == 3) {
-        
+      system("clear"); //clear screen
+      puts("Yello. Thank you for trying out our new Services \nThis service will be available very soon");
+      sleep(2); // sleep for two seconds before quiting
+      exit(0);    
     } else if(choice == 4) {
         
     } else if(choice == 5) {
@@ -517,6 +525,7 @@ int manageFavourites() {
         exit(0);
     }
 }
+
 
 //airtimeBundles function
 int airtimeBundles() {
