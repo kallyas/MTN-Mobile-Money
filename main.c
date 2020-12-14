@@ -1,15 +1,3 @@
-/******************************************************************************
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-MTN Mobile Money Replica By Iden.
-Note: change system("clear") to system("cls")
-I used system("clear") because the compiler is running on a unix system
-so for windows, you have to use system("cls).
-Started this program today evening, Implying most of the menu options are not yet worked on!
-for testing purposes, try option 1
-*******************************************************************************/
-
 #include <stdio.h>
 #include <stdlib.h>
 // #include <conio.h>
