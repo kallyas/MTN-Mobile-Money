@@ -458,7 +458,7 @@ int data() {
 }
 int saveData() {
   FILE *fptr;
-  fptr = fopen("data", "rw");
+  fptr = fopen("data", "w+");
 
   while ((balance = getw(fptr)) != EOF) {
     balance = mobileMoney - ammount;
