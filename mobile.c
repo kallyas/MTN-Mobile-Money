@@ -23,14 +23,12 @@ struct mobileMoneyTransaction {
 
 // Function to display the menu
 void displayMenu() {
-    printf("
-    1. Register\n
-    2. Deposit\n
-    3. Withdraw\n
-    4. Transfer\n
-    5. Check Balance\n
-    6. Exit\n
-    ");
+    printf("1. Register\n");
+    printf("2. Deposit\n");
+    printf("3. Withdraw\n");
+    printf("4. Transfer\n");
+    printf("5. Check Balance\n");
+    printf("6. Exit\n");
 }
 
 // Function to register a new user
