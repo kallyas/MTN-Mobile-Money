@@ -25,7 +25,7 @@ struct mobileMoneyTransaction {
 void saveUserDetails(struct mobileMoney *user) {
     FILE *file;
     file = fopen("user.txt", "w");
-    fprintf(file, "%s %s %s %s", user->name, user->number, user->network, user->amount);
+    fprintf(file, "%s  %s  %s  %s ", user->name, user->number, user->network, user->amount);
     fclose(file);
 }
 
@@ -33,38 +33,38 @@ void saveUserDetails(struct mobileMoney *user) {
 void saveTransactionDetails(struct mobileMoneyTransaction *transaction) {
     FILE *file;
     file = fopen("transaction.txt", "w");
-    fprintf(file, "%s %s %s %s %s", transaction->name, transaction->number, transaction->network, transaction->amount, transaction->transaction);
+    fprintf(file, "%s  %s  %s  %s  %s ", transaction->name, transaction->number, transaction->network, transaction->amount, transaction->transaction);
     fclose(file);
 }
 
 // Function to register a new user
 void registerUser(struct mobileMoney *user) {
     printf("Enter your name: ");
-    scanf("%s", user->name);
+    scanf("%s ", user->name);
     printf("Enter your phone number: ");
-    scanf("%s", user->number);
+    scanf("%s ", user->number);
     printf("Enter your network: ");
-    scanf("%s", user->network);
+    scanf("%s ", user->network);
     printf("Enter your amount: ");
-    scanf("%s", user->amount);
+    scanf("%s ", user->amount);
     saveUserDetails(user);
 }
 
 // Function to deposit money
 void depositMoney(struct mobileMoney *user, struct mobileMoneyTransaction *transaction) {
     printf("Enter your name: ");
-    scanf("%s", transaction->name);
+    scanf("%s ", transaction->name);
     printf("Enter your phone number: ");
-    scanf("%s", transaction->number);
+    scanf("%s ", transaction->number);
     printf("Enter your network: ");
-    scanf("%s", transaction->network);
+    scanf("%s ", transaction->network);
     printf("Enter your amount: ");
-    scanf("%s", transaction->amount);
+    scanf("%s ", transaction->amount);
     strcpy(transaction->transaction, "Deposit");
     if (strcmp(user->name, transaction->name) == 0 && strcmp(user->number, transaction->number) == 0 && strcmp(user->network, transaction->network) == 0) {
         int amount = atoi(user->amount) + atoi(transaction->amount);
         sprintf(user->amount, "%d", amount);
-        printf("Deposit successful! Your new balance is %s", user->amount);
+        printf("Deposit successful! Your new balance is %s ", user->amount);
         saveUserDetails(user);
         saveTransactionDetails(transaction);
     } else {
@@ -75,13 +75,13 @@ void depositMoney(struct mobileMoney *user, struct mobileMoneyTransaction *trans
 // Function to withdraw money
 void withdrawMoney(struct mobileMoney *user, struct mobileMoneyTransaction *transaction) {
     printf("Enter your name: ");
-    scanf("%s", transaction->name);
+    scanf("%s ", transaction->name);
     printf("Enter your phone number: ");
-    scanf("%s", transaction->number);
+    scanf("%s ", transaction->number);
     printf("Enter your network: ");
-    scanf("%s", transaction->network);
+    scanf("%s ", transaction->network);
     printf("Enter your amount: ");
-    scanf("%s", transaction->amount);
+    scanf("%s ", transaction->amount);
     strcpy(transaction->transaction, "Withdraw");
     if (strcmp(user->name, transaction->name) == 0 && strcmp(user->number, transaction->number) == 0 && strcmp(user->network, transaction->network) == 0) {
         int amount = atoi(user->amount) - atoi(transaction->amount);
@@ -89,7 +89,7 @@ void withdrawMoney(struct mobileMoney *user, struct mobileMoneyTransaction *tran
             printf("Withdraw failed! You do not have enough balance.");
         } else {
             sprintf(user->amount, "%d", amount);
-            printf("Withdraw successful! Your new balance is %s", user->amount);
+            printf("Withdraw successful! Your new balance is %s ", user->amount);
             saveUserDetails(user);
             saveTransactionDetails(transaction);
         }
@@ -101,13 +101,13 @@ void withdrawMoney(struct mobileMoney *user, struct mobileMoneyTransaction *tran
 // Function to transfer money
 void transferMoney(struct mobileMoney *user, struct mobileMoneyTransaction *transaction) {
     printf("Enter your name: ");
-    scanf("%s", transaction->name);
+    scanf("%s ", transaction->name);
     printf("Enter your phone number: ");
-    scanf("%s", transaction->number);
+    scanf("%s ", transaction->number);
     printf("Enter your network: ");
-    scanf("%s", transaction->network);
+    scanf("%s ", transaction->network);
     printf("Enter your amount: ");
-    scanf("%s", transaction->amount);
+    scanf("%s ", transaction->amount);
     strcpy(transaction->transaction, "Transfer");
     if (strcmp(user->name, transaction->name) == 0 && strcmp(user->number, transaction->number) == 0 && strcmp(user->network, transaction->network) == 0) {
         int amount = atoi(user->amount) - atoi(transaction->amount);
@@ -115,7 +115,7 @@ void transferMoney(struct mobileMoney *user, struct mobileMoneyTransaction *tran
             printf("Transfer failed! You do not have enough balance.");
         } else {
             sprintf(user->amount, "%d", amount);
-            printf("Transfer successful! Your new balance is %s", user->amount);
+            printf("Transfer successful! Your new balance is %s ", user->amount);
             saveUserDetails(user);
             saveTransactionDetails(transaction);
         }
@@ -126,14 +126,14 @@ void transferMoney(struct mobileMoney *user, struct mobileMoneyTransaction *tran
 
 // Function to check balance
 void checkBalance(struct mobileMoney *user) {
-    printf("Your balance is %s", user->amount);
+    printf("Your balance is %s ", user->amount);
 }
 
 // Function to load the user details from the file
 void loadUserDetails(struct mobileMoney *user) {
     FILE *file;
     file = fopen("user.txt", "r");
-    fscanf(file, "%s %s %s %s", user->name, user->number, user->network, user->amount);
+    fscanf(file, "%s  %s  %s  %s ", user->name, user->number, user->network, user->amount);
     fclose(file);
 }
 
@@ -141,25 +141,25 @@ void loadUserDetails(struct mobileMoney *user) {
 void loadTransactionDetails(struct mobileMoneyTransaction *transaction) {
     FILE *file;
     file = fopen("transaction.txt", "r");
-    fscanf(file, "%s %s %s %s %s", transaction->name, transaction->number, transaction->network, transaction->amount, transaction->transaction);
+    fscanf(file, "%s  %s  %s  %s  %s ", transaction->name, transaction->number, transaction->network, transaction->amount, transaction->transaction);
     fclose(file);
 }
 
 // Function to display the transaction details
 void displayTransactionDetails(struct mobileMoneyTransaction *transaction) {
-    printf("Name: %s", transaction->name);
-    printf("Phone Number: %s", transaction->number);
-    printf("Network: %s", transaction->network);
-    printf("Amount: %s", transaction->amount);
-    printf("Transaction: %s", transaction->transaction);
+    printf("Name: %s ", transaction->name);
+    printf("Phone Number: %s ", transaction->number);
+    printf("Network: %s ", transaction->network);
+    printf("Amount: %s ", transaction->amount);
+    printf("Transaction: %s ", transaction->transaction);
 }
 
 // Function to display the user details
 void displayUserDetails(struct mobileMoney *user) {
-    printf("Name: %s", user->name);
-    printf("Phone Number: %s", user->number);
-    printf("Network: %s", user->network);
-    printf("Amount: %s", user->amount);
+    printf("Name: %s ", user->name);
+    printf("Phone Number: %s ", user->number);
+    printf("Network: %s ", user->network);
+    printf("Amount: %s ", user->amount);
 }
 
 // Function to display the menu
