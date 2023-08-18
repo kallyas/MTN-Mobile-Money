@@ -151,7 +151,7 @@ void displayTransactionDetails(struct mobileMoneyTransaction *transaction) {
     printf("Phone Number: %s ", transaction->number);
     printf("Network: %s ", transaction->network);
     printf("Amount: %s ", transaction->amount);
-    printf("Transaction: %s ", transaction->transaction);
+    printf("Transaction: %s \n", transaction->transaction);
 }
 
 // Function to display the user details
@@ -159,7 +159,7 @@ void displayUserDetails(struct mobileMoney *user) {
     printf("Name: %s ", user->name);
     printf("Phone Number: %s ", user->number);
     printf("Network: %s ", user->network);
-    printf("Amount: %s ", user->amount);
+    printf("Amount: %s \n", user->amount);
 }
 
 // Function to display the menu
