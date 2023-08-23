@@ -35,8 +35,8 @@ void saveDataToFile(const char *filename, const void *data, size_t dataSize) {
 void loadDataFromFile(const char *filename, void *data, size_t dataSize) {
     FILE *file = fopen(filename, "rb");
     if (file == NULL) {
-        perror("Error opening file");
-        exit(EXIT_FAILURE);
+         saveDataToFile(filename, data, dataSize);
+        return;
     }
 
     fread(data, dataSize, 1, file);
